@@ -39,3 +39,10 @@
 	FROM invoices 
 	WHERE total>10;
 	
+
+	/*=======How many tracks does each album have? Your solution should include Album id and its number of tracks sorted from highest to lowest====*/
+
+    SELECT *
+	FROM albums
+	WHERE AlbumId  
+	ORDER BY  tracks DESC;
