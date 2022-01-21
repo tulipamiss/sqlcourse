@@ -129,7 +129,7 @@ Sorguda ArtistId, Name, Title ve AlbumId olmalıdır */
  
  /*===================================================*/   
 
-  /* araclar.db adındaki veritabanını kullanarak Markalar ve Siparisler tablolarındaki 
+  * araclar.db adındaki veritabanını kullanarak Markalar ve Siparisler tablolarındaki 
  marka_id'si ayni olan kayıtların marka_id, marka_adi, siparis_adedi ve siparis_tarihi   
  bilgilerini  listeleyen bir sorgu yaziniz.*/
  
@@ -146,23 +146,31 @@ Sorguda ArtistId, Name, Title ve AlbumId olmalıdır */
 
 /* ÖDEV: Chinook veritabanındaki tracks tablosunda bulunan her bir şarkının türü (genre)
 listeleyiniz.*/
+   SELECT * FROM tracks; 
+   SELECT * FROM genres;
+	
    SELECT genres.GenreId,tracks.NAME, genres.NAME  
-   FROM tracks INNER JOIN genres 
+   FROM tracks 
+   INNER JOIN genres 
    ON genres.GenreId=tracks.GenreId;
 	 
  /* ÖDEV: invoice tablosundaki faturaların her birinin müşteri adını (FirstName),
  soyadını (lastName), fatura tarihi (InvoiceDate) ve fatura meblağını (total) 
  listeleyen sorguyu yazınız */
- SELECT customers.FirstName,customers.LastName,invoices.InvoiceDate,invoices.Total 
-FROM customers INNER JOIN invoices ON customers.CustomerId=invoices.CustomerId;
+ 
+   SELECT * FROM invoices;
+   SELECT * FROM customers;
 
-SELECT customers.FirstName,customers.LastName,sum(invoices.Total)
-FROM  invoices INNER JOIN customers ON customers.CustomerId=invoices.CustomerId GROUP BY LastName ;
+SELECT c.FirstName,c.LastName,i.InvoiceDate,i.Total
+FROM customers c INNER JOIN invoices  i ON c.CustomerId=i.CustomerId;
 ​
 	
 	/* ÖDEV: artists tablosunda bulunan her bir kişinin albums tablosunda 
 bulunan tüm albümlerinin listeleyen sorguyu yazınız. 
 Sorguda ArtistId, Name, Title ve AlbumId olmalıdır */
 
-SELECT albums.ArtistId, artists.Name, albums.Title,albums.AlbumId FROM albums LEFT JOIN artists 
+SELECT * FROM albums;
+SELECT * FROM artists;
+
+SELECT albums.ArtistId, artists.Name, albums.Title,albums.AlbumId FROM artists LEFT JOIN albums
 ON albums.AlbumId=artists.ArtistId ;
