@@ -3,7 +3,7 @@
 
 SELECT InvoiceId,CustomerId,total
 FROM invoices
-ORDER BY CustomerId ,total DESC;
+ORDER BY CustomerId ASC,total DESC;
 
 /*2. soru*/
 
@@ -15,7 +15,7 @@ ORDER BY total DESC ,CustomerId;
 /*4.soru*/
 SELECT *
 FROM invoices
-ORDER BY total >=10
+WHERE total >=10
 LIMIT 10;
 /*5.soru*/
 SELECT *
